@@ -3,8 +3,8 @@ import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import * as S from "./style";
 
-const CheckBox = ({ isChecked, onChange, label, value }) => {
-  const [checked, setChecked] = React.useState(true);
+const CheckBox = ({ isChecked, onChange, label, value, name }) => {
+  // const [checked, setChecked] = React.useState(true);
 
   const handleChange = (e) => {
     onChange && onChange(value);
@@ -18,9 +18,10 @@ const CheckBox = ({ isChecked, onChange, label, value }) => {
         control={
           <Checkbox
             checked={isChecked}
-            onChange={handleChange}
+            // onChange={handleChange}
             color="primary"
             value={value}
+            name={name}
           />
         }
         label={label}

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Text from "components/Text";
 import Spinner from "components/Spinner";
 // import CheckBox from "components/CheckBox";
-import FormGroup from "@material-ui/core/FormGroup";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import IconButton from "@material-ui/core/IconButton";
@@ -13,11 +12,13 @@ const UserList = ({ users, isLoading }) => {
   const [hoveredUserId, setHoveredUserId] = useState();
   const [filteredUsers, setFilteredUsers] = useState([]);
 
+  // Checkboxes state:
   const [state, setState] = useState({
     brazil: false,
     australia: false,
     canada: false,
     germany: false,
+    finland: false,
   });
 
   const handleChange = (e) => {
@@ -33,7 +34,6 @@ const UserList = ({ users, isLoading }) => {
     setHoveredUserId();
   };
 
-  // const countriesValues = ["brazil", "australia", "canada", "germany"];
   const countriesValues = () => {
     const results = [];
     for (const [key, value] of Object.entries({ ...state })) {
@@ -42,7 +42,6 @@ const UserList = ({ users, isLoading }) => {
         results.push(`${key}`);
       }
     }
-    console.log(results);
     return results;
   };
 
@@ -59,8 +58,6 @@ const UserList = ({ users, isLoading }) => {
   };
 
   useEffect(() => {
-    console.log(state);
-    console.log(users);
     if (users) {
       filterUsersByCountry();
     }
@@ -69,83 +66,67 @@ const UserList = ({ users, isLoading }) => {
   return (
     <S.UserList>
       <S.Filters>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={state.brazil}
-                onChange={handleChange}
-                color="primary"
-                value="brazil"
-                name="brazil"
-              />
-            }
-            label="Brazil"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={state.australia}
-                onChange={handleChange}
-                color="primary"
-                value="australia"
-                name="australia"
-              />
-            }
-            label="Australia"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={state.canada}
-                onChange={handleChange}
-                color="primary"
-                value="canada"
-                name="canada"
-              />
-            }
-            label="Canada"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={state.germany}
-                onChange={handleChange}
-                color="primary"
-                value="germany"
-                name="germany"
-              />
-            }
-            label="Germany"
-          />
-        </FormGroup>
-        {/* <Checkbox
-          value="brazil"
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={state.brazil}
+              onChange={handleChange}
+              color="primary"
+              value="brazil"
+              name="brazil"
+            />
+          }
           label="Brazil"
-          isChecked={state.brazil}
-          // onChange={handleChange}
-          // name="brazil"
         />
-        <Checkbox
-          value="australia"
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={state.australia}
+              onChange={handleChange}
+              color="primary"
+              value="australia"
+              name="australia"
+            />
+          }
           label="Australia"
-          checked={state.australia}
-          // onChange={handleChange}
-          // name="australia"
         />
-        <Checkbox
-          value="canada"
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={state.canada}
+              onChange={handleChange}
+              color="primary"
+              value="canada"
+              name="canada"
+            />
+          }
           label="Canada"
-          checked={state.canada}
-          // onChange={handleChange}
-          // name="canada"
         />
-        <Checkbox
-          value="germany"
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={state.germany}
+              onChange={handleChange}
+              color="primary"
+              value="germany"
+              name="germany"
+            />
+          }
           label="Germany"
-          checked={state.germany}
-          // onChange={handleChange}
-        /> */}
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={state.finland}
+              onChange={handleChange}
+              color="primary"
+              value="finland"
+              name="finland"
+            />
+          }
+          label="Finland"
+        />
+
         {/* <CheckBox
           value="DE"
           label="Germany"
