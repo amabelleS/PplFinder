@@ -1,13 +1,24 @@
 import React from "react";
 import Text from "components/Text";
+// import UserList from "components/UserList";
+import List from "../../components/List";
+import { usePeopleFetch } from "hooks";
+
 import * as S from "./style";
 
 const Favorites = () => {
+  const { users, isLoading } = usePeopleFetch();
+
   return (
     <S.Favorites>
-      <Text size="64px" bold>
-        Favorites
-      </Text>
+      <S.Content>
+        <S.Header>
+          <Text size="64px" bold>
+            Favorites
+          </Text>
+        </S.Header>
+        <List users={users} isLoading={isLoading} />
+      </S.Content>
     </S.Favorites>
   );
 };
