@@ -6,13 +6,14 @@ import Tab from "@material-ui/core/Tab";
 
 const NavBar = () => {
   const routes = ["/", "/favorites"];
-
-  const [value, setValue] = useState(routes[0]);
-
-  // Do I need it?
   let history = useHistory();
 
+  const [value, setValue] = useState(history.location.pathname);
+
+  console.log(history);
+
   const handleChange = (event, newValue) => {
+    // Do I need to push here?
     history.push(`${newValue}`);
     setValue(newValue);
   };
@@ -26,16 +27,10 @@ const NavBar = () => {
         indicatorColor="primary"
         textColor="primary"
       >
-        <Tab
-          label="Home"
-          index={routes[0]}
-          value={routes[0]}
-          component={Link}
-          to={routes[0]}
-        />
+        <Tab label="Home" index={0} value={routes[0]} component={Link} to={routes[0]} />
         <Tab
           label="Favorites"
-          index={routes[1]}
+          index={1}
           value={routes[1]}
           component={Link}
           to={routes[1]}

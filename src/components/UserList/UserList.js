@@ -23,7 +23,7 @@ const UserList = ({ users, isLoading }) => {
 
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.checked });
-    console.log(e.target);
+    // console.log(e.target);
   };
 
   const handleMouseEnter = (index) => {
