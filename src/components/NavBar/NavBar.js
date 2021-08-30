@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -7,10 +7,13 @@ import Tab from "@material-ui/core/Tab";
 const NavBar = () => {
   const routes = ["/", "/favorites"];
 
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(routes[0]);
+
+  // Do I need it?
+  let history = useHistory();
 
   const handleChange = (event, newValue) => {
-    console.log(event);
+    history.push(`${newValue}`);
     setValue(newValue);
   };
 
@@ -23,10 +26,16 @@ const NavBar = () => {
         indicatorColor="primary"
         textColor="primary"
       >
-        <Tab label="Home" index={0} value={routes[0]} component={Link} to={routes[0]} />
+        <Tab
+          label="Home"
+          index={routes[0]}
+          value={routes[0]}
+          component={Link}
+          to={routes[0]}
+        />
         <Tab
           label="Favorites"
-          index={1}
+          index={routes[1]}
           value={routes[1]}
           component={Link}
           to={routes[1]}
