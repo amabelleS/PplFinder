@@ -1,13 +1,12 @@
 import React from "react";
 import Text from "components/Text";
-// import UserList from "components/UserList";
 import List from "../../components/List";
-import { usePeopleFetch } from "hooks";
+import { useFavorites } from "hooks";
 
 import * as S from "./style";
 
 const Favorites = () => {
-  const { users, isLoading } = usePeopleFetch();
+  const { favoritesUsers } = useFavorites();
 
   return (
     <S.Favorites>
@@ -17,7 +16,7 @@ const Favorites = () => {
             Favorites
           </Text>
         </S.Header>
-        <List users={users} isLoading={isLoading} />
+        <List users={favoritesUsers} />
       </S.Content>
     </S.Favorites>
   );

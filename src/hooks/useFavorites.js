@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const useFavorites = () => {
   const [hoveredUserId, setHoveredUserId] = useState();
-  const [favoritesUsers, setFavoritesUsers] = useState([]);
-  const [favoritesUUIDs, setFavoritesUUIDs] = useState([]);
+  const [favoritesUsers, setFavoritesUsers] = useState(
+    JSON.parse(localStorage.getItem("favorites")) || []
+  );
+  const [favoritesUUIDs, setFavoritesUUIDs] = useState(
+    JSON.parse(localStorage.getItem("favoritesUUIs")) || []
+  );
 
   const handleMouseEnter = (index) => {
     setHoveredUserId(index);
@@ -32,6 +36,13 @@ export const useFavorites = () => {
       setFavoritesUUIDs(updatedFavoritesUUIDs);
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favoritesUsers));
+    localStorage.setItem("favoritesUUIs", JSON.stringify(favoritesUUIDs));
+    console.log(favoritesUsers);
+    console.log(localStorage);
+  }, [favoritesUsers]);
 
   return {
     favoritesUsers,

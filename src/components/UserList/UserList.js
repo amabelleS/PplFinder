@@ -6,6 +6,8 @@ import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import List from "../../components/List";
+// import { useFavorites } from "hooks";
 import * as S from "./style";
 
 const UserList = ({ users, isLoading }) => {
@@ -28,53 +30,40 @@ const UserList = ({ users, isLoading }) => {
     // console.log(e.target);
   };
 
-  const handleMouseEnter = (index) => {
-    setHoveredUserId(index);
-  };
+  // const handleMouseEnter = (index) => {
+  //   setHoveredUserId(index);
+  // };
 
-  const handleMouseLeave = () => {
-    setHoveredUserId();
-  };
+  // const handleMouseLeave = () => {
+  //   setHoveredUserId();
+  // };
 
-  const isUserInFavorites = (uuid) => {
-    // if (!favoritesUsers || favoritesUsers.length < 0) return false;
-    // if (favoritesUsers && favoritesUsers.length > 0) {
-    //   favoritesUsers.forEach((user) => {
-    //     if (user.login.uuid === uuid) return true;
-    //   });
-    //   return false;
-    // }
-    //
-    // return favoritesUsers[onFavorites] ? true : false;
-    //
-    return favoritesUUIDs.includes(uuid);
-  };
+  // const isUserInFavorites = (uuid) => {
+  //   return favoritesUUIDs.includes(uuid);
+  // };
 
-  const switchFavorites = (user, index) => {
-    const uuid = user.login.uuid;
-    console.log(isUserInFavorites(uuid));
-    console.log(user);
-    if (!isUserInFavorites(uuid)) {
-      // add icon
-      // add to favs
-      // const newUser = { ...user, onFavorites: true };
-      // favoritesUUIDs.push(uuid);
-      setFavoritesUUIDs([...favoritesUUIDs, uuid]);
-      setFavoritesUsers([...favoritesUsers, user]);
-    } else {
-      //remove to favorites
-      const updatedFavorites = [...favoritesUsers].filter(
-        // (fav) => fav.login.uuid !== uuid
-        (fav) => fav.login.uuid !== uuid
-      );
-      const updatedFavoritesUUIDs = [...favoritesUUIDs].filter(
-        // (fav) => fav.login.uuid !== uuid
-        (id) => id !== uuid
-      );
-      setFavoritesUsers(updatedFavorites);
-      setFavoritesUUIDs(updatedFavoritesUUIDs);
-    }
-  };
+  // const switchFavorites = (user, index) => {
+  //   const uuid = user.login.uuid;
+  //   console.log(isUserInFavorites(uuid));
+  //   console.log(user);
+  //   if (!isUserInFavorites(uuid)) {
+  //     // add to favs
+  //     setFavoritesUUIDs([...favoritesUUIDs, uuid]);
+  //     setFavoritesUsers([...favoritesUsers, user]);
+  //   } else {
+  //     //remove to favorites
+  //     const updatedFavorites = [...favoritesUsers].filter(
+  //       // (fav) => fav.login.uuid !== uuid
+  //       (fav) => fav.login.uuid !== uuid
+  //     );
+  //     const updatedFavoritesUUIDs = [...favoritesUUIDs].filter(
+  //       // (fav) => fav.login.uuid !== uuid
+  //       (id) => id !== uuid
+  //     );
+  //     setFavoritesUsers(updatedFavorites);
+  //     setFavoritesUUIDs(updatedFavoritesUUIDs);
+  //   }
+  // };
 
   const countriesValues = () => {
     const results = [];
@@ -178,7 +167,11 @@ const UserList = ({ users, isLoading }) => {
         />
       </S.Filters>
 
-      <S.List>
+      <List
+        users={filteredUsers && filteredUsers.length > 0 ? filteredUsers : users}
+        isLoading={isLoading}
+      />
+      {/* <S.List>
         {(filteredUsers && filteredUsers.length > 0 ? filteredUsers : users).map(
           (user, index) => {
             return (
@@ -219,7 +212,7 @@ const UserList = ({ users, isLoading }) => {
             <Spinner color="primary" size="45px" thickness={6} variant="indeterminate" />
           </S.SpinnerWrapper>
         )}
-      </S.List>
+      </S.List> */}
     </S.UserList>
   );
 };
