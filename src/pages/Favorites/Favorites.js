@@ -16,7 +16,7 @@ const Favorites = () => {
             Favorites
           </Text>
         </S.Header>
-        <List users={favoritesUsers} />
+        <List users={favoritesUsers} favMode={true} />
       </S.Content>
     </S.Favorites>
   );

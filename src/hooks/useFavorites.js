@@ -42,6 +42,7 @@ export const useFavorites = () => {
     localStorage.setItem("favoritesUUIs", JSON.stringify(favoritesUUIDs));
     console.log(favoritesUsers);
     console.log(localStorage);
+    // window.location.reload(false);
   }, [favoritesUsers]);
 
   return {
