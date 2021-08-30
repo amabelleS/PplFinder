@@ -1,13 +1,10 @@
 import React from "react";
 import Text from "components/Text";
 import List from "../../components/List";
-import { useFavorites } from "hooks";
 
 import * as S from "./style";
 
 const Favorites = () => {
-  const { favoritesUsers } = useFavorites();
-
   return (
     <S.Favorites>
       <S.Content>
@@ -16,7 +13,7 @@ const Favorites = () => {
             Favorites
           </Text>
         </S.Header>
-        <List users={favoritesUsers} favMode={true} />
+        <List favMode={true} />
       </S.Content>
     </S.Favorites>
   );

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-// import { usePeopleFetch } from "hooks";
+import React from "react";
 import Text from "components/Text";
 import Spinner from "components/Spinner";
 import IconButton from "@material-ui/core/IconButton";
@@ -8,25 +7,14 @@ import { useFavorites } from "hooks/useFavorites";
 import * as S from "./style";
 
 const List = ({ users, isLoading, favMode }) => {
-  //   const { users, isLoading } = usePeopleFetch();
-  //   const [hoveredUserId, setHoveredUserId] = useState();
   const {
     favoritesUsers,
-    favoritesUUIDs,
     switchFavorites,
     isUserInFavorites,
     handleMouseEnter,
     handleMouseLeave,
     hoveredUserId,
   } = useFavorites();
-
-  //   const handleMouseEnter = (index) => {
-  //     setHoveredUserId(index);
-  //   };
-
-  //   const handleMouseLeave = () => {
-  //     setHoveredUserId();
-  //   };
 
   const usersList = favMode ? favoritesUsers : users;
 

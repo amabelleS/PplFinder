@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Text from "components/Text";
-import Spinner from "components/Spinner";
+// import Text from "components/Text";
+// import Spinner from "components/Spinner";
 // import CheckBox from "components/CheckBox";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import IconButton from "@material-ui/core/IconButton";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+// import IconButton from "@material-ui/core/IconButton";
+// import FavoriteIcon from "@material-ui/icons/Favorite";
 import List from "../../components/List";
-// import { useFavorites } from "hooks";
 import * as S from "./style";
 
 const UserList = ({ users, isLoading }) => {
-  const [hoveredUserId, setHoveredUserId] = useState();
   const [filteredUsers, setFilteredUsers] = useState([]);
-  const [favoritesUsers, setFavoritesUsers] = useState([]);
-  const [favoritesUUIDs, setFavoritesUUIDs] = useState([]);
 
   // Checkboxes state:
   const [state, setState] = useState({
@@ -27,7 +23,6 @@ const UserList = ({ users, isLoading }) => {
 
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.checked });
-    // console.log(e.target);
   };
 
   // const handleMouseEnter = (index) => {
@@ -36,33 +31,6 @@ const UserList = ({ users, isLoading }) => {
 
   // const handleMouseLeave = () => {
   //   setHoveredUserId();
-  // };
-
-  // const isUserInFavorites = (uuid) => {
-  //   return favoritesUUIDs.includes(uuid);
-  // };
-
-  // const switchFavorites = (user, index) => {
-  //   const uuid = user.login.uuid;
-  //   console.log(isUserInFavorites(uuid));
-  //   console.log(user);
-  //   if (!isUserInFavorites(uuid)) {
-  //     // add to favs
-  //     setFavoritesUUIDs([...favoritesUUIDs, uuid]);
-  //     setFavoritesUsers([...favoritesUsers, user]);
-  //   } else {
-  //     //remove to favorites
-  //     const updatedFavorites = [...favoritesUsers].filter(
-  //       // (fav) => fav.login.uuid !== uuid
-  //       (fav) => fav.login.uuid !== uuid
-  //     );
-  //     const updatedFavoritesUUIDs = [...favoritesUUIDs].filter(
-  //       // (fav) => fav.login.uuid !== uuid
-  //       (id) => id !== uuid
-  //     );
-  //     setFavoritesUsers(updatedFavorites);
-  //     setFavoritesUUIDs(updatedFavoritesUUIDs);
-  //   }
   // };
 
   const countriesValues = () => {
@@ -95,12 +63,12 @@ const UserList = ({ users, isLoading }) => {
   }, [state]);
 
   // logs:
-  useEffect(() => {
-    if (favoritesUsers) {
-      console.log(favoritesUsers);
-      console.log(favoritesUUIDs);
-    }
-  }, [favoritesUsers]);
+  // useEffect(() => {
+  //   if (favoritesUsers) {
+  //     console.log(favoritesUsers);
+  //     console.log(favoritesUUIDs);
+  //   }
+  // }, [favoritesUsers]);
 
   return (
     <S.UserList>
