@@ -11,6 +11,8 @@ import * as S from "./style";
 const UserList = ({ users, isLoading }) => {
   const [hoveredUserId, setHoveredUserId] = useState();
   const [filteredUsers, setFilteredUsers] = useState([]);
+  const [favoritesUsers, setFavoritesUsers] = useState([]);
+  const [favoritesUUIDs, setFavoritesUUIDs] = useState([]);
 
   // Checkboxes state:
   const [state, setState] = useState({
@@ -32,6 +34,46 @@ const UserList = ({ users, isLoading }) => {
 
   const handleMouseLeave = () => {
     setHoveredUserId();
+  };
+
+  const isUserInFavorites = (uuid) => {
+    // if (!favoritesUsers || favoritesUsers.length < 0) return false;
+    // if (favoritesUsers && favoritesUsers.length > 0) {
+    //   favoritesUsers.forEach((user) => {
+    //     if (user.login.uuid === uuid) return true;
+    //   });
+    //   return false;
+    // }
+    //
+    // return favoritesUsers[onFavorites] ? true : false;
+    //
+    return favoritesUUIDs.includes(uuid);
+  };
+
+  const switchFavorites = (user, index) => {
+    const uuid = user.login.uuid;
+    console.log(isUserInFavorites(uuid));
+    console.log(user);
+    if (!isUserInFavorites(uuid)) {
+      // add icon
+      // add to favs
+      // const newUser = { ...user, onFavorites: true };
+      // favoritesUUIDs.push(uuid);
+      setFavoritesUUIDs([...favoritesUUIDs, uuid]);
+      setFavoritesUsers([...favoritesUsers, user]);
+    } else {
+      //remove to favorites
+      const updatedFavorites = [...favoritesUsers].filter(
+        // (fav) => fav.login.uuid !== uuid
+        (fav) => fav.login.uuid !== uuid
+      );
+      const updatedFavoritesUUIDs = [...favoritesUUIDs].filter(
+        // (fav) => fav.login.uuid !== uuid
+        (id) => id !== uuid
+      );
+      setFavoritesUsers(updatedFavorites);
+      setFavoritesUUIDs(updatedFavoritesUUIDs);
+    }
   };
 
   const countriesValues = () => {
@@ -62,6 +104,14 @@ const UserList = ({ users, isLoading }) => {
       filterUsersByCountry();
     }
   }, [state]);
+
+  // logs:
+  useEffect(() => {
+    if (favoritesUsers) {
+      console.log(favoritesUsers);
+      console.log(favoritesUUIDs);
+    }
+  }, [favoritesUsers]);
 
   return (
     <S.UserList>
@@ -126,14 +176,8 @@ const UserList = ({ users, isLoading }) => {
           }
           label="Finland"
         />
-
-        {/* <CheckBox
-          value="DE"
-          label="Germany"
-          checked={state.germany}
-          onChange={handleChange}
-        /> */}
       </S.Filters>
+
       <S.List>
         {(filteredUsers && filteredUsers.length > 0 ? filteredUsers : users).map(
           (user, index) => {
@@ -142,6 +186,7 @@ const UserList = ({ users, isLoading }) => {
                 key={index}
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
+                onClick={() => switchFavorites(user, index)}
               >
                 <S.UserPicture src={user?.picture.large} alt="" />
                 <S.UserInfo>
@@ -156,7 +201,11 @@ const UserList = ({ users, isLoading }) => {
                     {user?.location.city} {user?.location.country}
                   </Text>
                 </S.UserInfo>
-                <S.IconButtonWrapper isVisible={index === hoveredUserId}>
+                <S.IconButtonWrapper
+                  isVisible={
+                    index === hoveredUserId || isUserInFavorites(user.login.uuid)
+                  }
+                >
                   <IconButton>
                     <FavoriteIcon color="error" />
                   </IconButton>

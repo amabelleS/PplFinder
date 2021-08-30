@@ -4,19 +4,29 @@ import Text from "components/Text";
 import Spinner from "components/Spinner";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import { useFavorites } from "hooks/useFavorites";
 import * as S from "./style";
 
 const List = ({ users, isLoading }) => {
   //   const { users, isLoading } = usePeopleFetch();
-  const [hoveredUserId, setHoveredUserId] = useState();
+  //   const [hoveredUserId, setHoveredUserId] = useState();
+  const {
+    favoritesUsers,
+    favoritesUUIDs,
+    switchFavorites,
+    isUserInFavorites,
+    handleMouseEnter,
+    handleMouseLeave,
+    hoveredUserId,
+  } = useFavorites();
 
-  const handleMouseEnter = (index) => {
-    setHoveredUserId(index);
-  };
+  //   const handleMouseEnter = (index) => {
+  //     setHoveredUserId(index);
+  //   };
 
-  const handleMouseLeave = () => {
-    setHoveredUserId();
-  };
+  //   const handleMouseLeave = () => {
+  //     setHoveredUserId();
+  //   };
 
   return (
     <S.List>
@@ -27,6 +37,7 @@ const List = ({ users, isLoading }) => {
               key={index}
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
+              onClick={() => switchFavorites(user, index)}
             >
               <S.UserPicture src={user?.picture.large} alt="" />
               <S.UserInfo>
@@ -41,7 +52,9 @@ const List = ({ users, isLoading }) => {
                   {user?.location.city} {user?.location.country}
                 </Text>
               </S.UserInfo>
-              <S.IconButtonWrapper isVisible={index === hoveredUserId}>
+              <S.IconButtonWrapper
+                isVisible={index === hoveredUserId || isUserInFavorites(user.login.uuid)}
+              >
                 <IconButton>
                   <FavoriteIcon color="error" />
                 </IconButton>
