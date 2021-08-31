@@ -7,10 +7,15 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 // import IconButton from "@material-ui/core/IconButton";
 // import FavoriteIcon from "@material-ui/icons/Favorite";
 import List from "../../components/List";
+// import { usePeopleFetch } from "hooks/usePeopleFetch";
 import * as S from "./style";
 
 const UserList = ({ users, isLoading }) => {
   const [filteredUsers, setFilteredUsers] = useState([]);
+
+  // Update in ppl hook or here?? ----------------------------------------------?????????????
+  // const [loadedUsers, setLoadedUsers] = useState([]);
+  // const { handleScroll } = usePeopleFetch();
 
   // Checkboxes state:
   const [state, setState] = useState({
@@ -24,14 +29,6 @@ const UserList = ({ users, isLoading }) => {
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.checked });
   };
-
-  // const handleMouseEnter = (index) => {
-  //   setHoveredUserId(index);
-  // };
-
-  // const handleMouseLeave = () => {
-  //   setHoveredUserId();
-  // };
 
   const countriesValues = () => {
     const results = [];

@@ -40,8 +40,6 @@ export const useFavorites = () => {
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favoritesUsers));
     localStorage.setItem("favoritesUUIs", JSON.stringify(favoritesUUIDs));
-    console.log(favoritesUsers);
-    console.log(localStorage);
   }, [favoritesUsers]);
 
   return {

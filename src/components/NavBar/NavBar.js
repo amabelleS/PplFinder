@@ -10,8 +10,6 @@ const NavBar = () => {
 
   const [value, setValue] = useState(history.location.pathname);
 
-  console.log(history);
-
   const handleChange = (event, newValue) => {
     // Do I need to push here?
     history.push(`${newValue}`);

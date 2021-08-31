@@ -18,11 +18,6 @@ export const usePeopleFetch = () => {
   //     setPage((prev) => prev + 1);
   //   }
   // };
-  const options = {
-    root: null,
-    rootMargin: "10px",
-    treshhold: 1,
-  };
 
   const observer = useRef(null);
   const lastUserlementRef = useCallback(
@@ -35,7 +30,7 @@ export const usePeopleFetch = () => {
           console.log("visiii");
           setPage((prevPageNumber) => prevPageNumber + 1);
         }
-      }, options);
+      });
       if (node) observer.current.observe(node);
     },
     [isLoading, hasMore]
