@@ -34,6 +34,7 @@ export const usePeopleFetch = () => {
         if (entries[0].isIntersecting && hasMore) {
           console.log("visiii");
           setPage((prevPageNumber) => prevPageNumber + 1);
+          // fetchUsers();
         }
       }, options);
       if (node) observer.current.observe(node);
@@ -44,20 +45,20 @@ export const usePeopleFetch = () => {
   async function fetchUsers() {
     setIsLoading(true);
     setError(false);
-    const response = await axios
-      .get(`https://randomuser.me/api/?page=${page}&results=25`)
-      // await axios({
-      //   method: "GET",
-      //   // url: `https://randomuser.me/api/?results=25&page=${page}`,
-      //   url: `https://randomuser.me/api/?results=25`,
-      //   params: { page: page },
-      // })
+    // const response = await axios
+    //   .get(`https://randomuser.me/api/?page=${page}&results=25`)
+    await axios({
+      method: "GET",
+      url: `https://randomuser.me/api/?page=${page}&results=25`,
+      // params: { page: page },
+    })
       .then((res) => {
         setUsers((prev) => {
           return [...prev, ...res.data.results];
         });
         setHasMore(res.data.results.length > 0);
         setIsLoading(false);
+        console.log(res.data);
       })
       .catch((err) => {
         setError(true);
@@ -65,7 +66,6 @@ export const usePeopleFetch = () => {
     // setIsLoading(false);
     // setUsers(response.data.results);
     // console.log(users);
-    // console.log([...response.data.results]);
     // setUsers((prev) => {
     //   return [...prev, response.data.results];
     // });
@@ -73,7 +73,11 @@ export const usePeopleFetch = () => {
 
   useEffect(() => {
     fetchUsers();
+    // setIsLoading(false);
     console.log(page);
+    console.log(users);
+    console.log(isLoading);
+    console.log(lastUserlementRef);
   }, [page]);
 
   return {

@@ -68,6 +68,7 @@ export const usePeopleFetch = () => {
 
   useEffect(() => {
     fetchUsers();
+    setIsLoading(false);
     console.log(page);
   }, [page]);
 
