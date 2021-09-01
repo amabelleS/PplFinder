@@ -9,12 +9,12 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import List from "../../components/List";
 import User from "../../components/User";
 import { usePeopleFetch } from "hooks/usePeopleFetch";
-// import { useFavorites } from "hooks/useFavorites";
+import { useFavorites } from "hooks/useFavorites";
 import * as S from "./style";
 
 const UserList = () => {
   const { users, isLoading, error, lastUserlementRef } = usePeopleFetch();
-  // const { switchFavorites, handleMouseEnter, handleMouseLeave } = useFavorites();
+  const { switchFavorites, handleMouseEnter, handleMouseLeave } = useFavorites();
   const [filteredUsers, setFilteredUsers] = useState([]);
 
   // Update in ppl hook or here?? ----------------------------------------------?????????????
@@ -154,10 +154,19 @@ const UserList = () => {
                     key={index}
                     isLast={true}
                     lastUserlementRef={lastUserlementRef}
+                    // onClick={() => switchFavorites(user, index)}
                   />
                 );
               } else {
-                return <User user={user} index={index} key={index} isLast={false} />;
+                return (
+                  <User
+                    user={user}
+                    index={index}
+                    key={index}
+                    isLast={false}
+                    // onClick={() => switchFavorites(user, index)}
+                  />
+                );
               }
             }
           )}

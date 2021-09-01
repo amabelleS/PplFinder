@@ -7,8 +7,7 @@ import User from "../../components/User";
 import * as S from "./style";
 
 const Favorites = () => {
-  const { favoritesUsers, switchFavorites, handleMouseEnter, handleMouseLeave } =
-    useFavorites();
+  const { favoritesUsers, switchFavorites } = useFavorites();
 
   return (
     <S.Favorites>
@@ -32,9 +31,7 @@ const Favorites = () => {
                   user={user}
                   index={index}
                   key={index}
-                  onMouseEnter={() => handleMouseEnter(index)}
-                  onMouseLeave={handleMouseLeave}
-                  onClick={() => switchFavorites(user, index)}
+                  // onClick={() => switchFavorites(user, index)}
                 />
               );
             })}
