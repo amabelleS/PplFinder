@@ -21,17 +21,6 @@ const List = ({ users, isLoading, favMode }) => {
 
   const usersList = favMode ? favoritesUsers : users;
 
-  //   const handleScroll = (event) => {
-  //     // console.log("scrolling...:" + event);
-  //     const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
-  //   console.log("scrolling...scrollTop:", scrollTop);
-  //   console.log("clientHeight:" + clientHeight);
-  //   console.log("scrollHeight:" + scrollHeight);
-  //     if (scrollHeight - scrollTop === clientHeight) {
-  //       setPage((prev) => prev + 1);
-  //     }
-  //   };
-
   return (
     <S.List>
       {!isLoading &&

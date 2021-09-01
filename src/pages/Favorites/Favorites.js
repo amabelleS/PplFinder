@@ -2,7 +2,6 @@ import React from "react";
 import Text from "components/Text";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { useFavorites } from "hooks/useFavorites";
-import List from "../../components/List";
 import User from "../../components/User";
 
 import * as S from "./style";
@@ -25,12 +24,13 @@ const Favorites = () => {
             <FavoriteIcon color="error" fontSize="large" style={{ marginLeft: "1rem" }} />
           </Text>
         </S.Header>
-        {/* <List favMode={true} /> */}
         <S.List>
           {favoritesUsers.length > 0 &&
             favoritesUsers.map((user, index) => {
               return (
                 <User
+                  user={user}
+                  index={index}
                   key={index}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}

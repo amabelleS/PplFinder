@@ -58,7 +58,7 @@ export const usePeopleFetch = () => {
         });
         setHasMore(res.data.results.length > 0);
         setIsLoading(false);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
         setError(true);

@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 // import Text from "components/Text";
-// import Spinner from "components/Spinner";
+import Spinner from "components/Spinner";
 // import CheckBox from "components/CheckBox";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 // import IconButton from "@material-ui/core/IconButton";
 // import FavoriteIcon from "@material-ui/icons/Favorite";
 import List from "../../components/List";
-// import { usePeopleFetch } from "hooks/usePeopleFetch";
+import User from "../../components/User";
+import { usePeopleFetch } from "hooks/usePeopleFetch";
+// import { useFavorites } from "hooks/useFavorites";
 import * as S from "./style";
 
-const UserList = ({ users, isLoading }) => {
+const UserList = () => {
+  const { users, isLoading, error, lastUserlementRef } = usePeopleFetch();
+  // const { switchFavorites, handleMouseEnter, handleMouseLeave } = useFavorites();
   const [filteredUsers, setFilteredUsers] = useState([]);
 
   // Update in ppl hook or here?? ----------------------------------------------?????????????
@@ -132,10 +136,38 @@ const UserList = ({ users, isLoading }) => {
         />
       </S.Filters>
 
-      <List
+      {/* <List
         users={filteredUsers && filteredUsers.length > 0 ? filteredUsers : users}
         isLoading={isLoading}
-      />
+      /> */}
+
+      <S.List>
+        {!isLoading &&
+          users.length > 0 &&
+          (filteredUsers && filteredUsers.length > 0 ? filteredUsers : users).map(
+            (user, index) => {
+              if (users.length === index + 1) {
+                return (
+                  <User
+                    user={user}
+                    index={index}
+                    key={index}
+                    isLast={true}
+                    lastUserlementRef={lastUserlementRef}
+                  />
+                );
+              } else {
+                return <User user={user} index={index} key={index} isLast={false} />;
+              }
+            }
+          )}
+        {isLoading && (
+          <S.SpinnerWrapper>
+            <Spinner color="primary" size="45px" thickness={6} variant="indeterminate" />
+          </S.SpinnerWrapper>
+        )}
+      </S.List>
+
       {/* <S.List>
         {(filteredUsers && filteredUsers.length > 0 ? filteredUsers : users).map(
           (user, index) => {

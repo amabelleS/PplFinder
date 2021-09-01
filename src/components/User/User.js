@@ -1,23 +1,27 @@
 import React from "react";
 import Text from "components/Text";
-import Spinner from "components/Spinner";
-import CheckBox from "components/CheckBox";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { useFavorites } from "hooks/useFavorites";
+// import { usePeopleFetch } from "hooks/usePeopleFetch";
 
 import * as S from "./style";
 
-const User = ({ user, index }) => {
-  const { isUserInFavorites, hoveredUserId } = useFavorites();
+const User = ({ user, index, isLast, lastUserlementRef }) => {
+  const {
+    isUserInFavorites,
+    hoveredUserId,
+    switchFavorites,
+    handleMouseEnter,
+    handleMouseLeave,
+  } = useFavorites();
 
   return (
     <S.User
-    // ref={lastUserlementRef}
-    //   key={index}
-    //   onMouseEnter={() => handleMouseEnter(index)}
-    //   onMouseLeave={handleMouseLeave}
-    //   onClick={() => switchFavorites(user, index)}
+      ref={isLast ? lastUserlementRef : null}
+      onMouseEnter={() => handleMouseEnter(index)}
+      onMouseLeave={handleMouseLeave}
+      onClick={() => switchFavorites(user, index)}
     >
       <S.UserPicture src={user?.picture.large} alt="" />
       <S.UserInfo>
