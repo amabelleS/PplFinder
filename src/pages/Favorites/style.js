@@ -66,15 +66,17 @@ export const IconButtonWrapper = styled.div`
 export const ActionGroup = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-content: center;
   width: 70%;
+  /* width: 29%; */
 `;
 
 export const CSVLinkrWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-content: center;
+  margin-left: 8rem;
 
   > a {
     text-decoration: none;
