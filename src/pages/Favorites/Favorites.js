@@ -60,11 +60,7 @@ const Favorites = () => {
       });
       setSearchResults(results);
     }
-  }, [searchTerm]);
-
-  const showList = () => {
-    return searchResults && searchResults.length > 0 ? searchResults : null;
-  };
+  }, [searchTerm, favorites]);
 
   return (
     <S.Favorites>
@@ -101,20 +97,10 @@ const Favorites = () => {
           </S.CSVLinkrWrapper>
         </S.ActionGroup>
         <S.List>
-          {searchResults &&
-            searchResults.length > 0 &&
-            searchTerm !== "" &&
-            searchResults.map((user, index) => {
-              return <User user={user} index={index} key={index} isOnFavoritesPage />;
-            })}
           {favorites.length > 0 &&
-            favorites.map((user, index) => {
-              return <User user={user} index={index} key={index} isOnFavoritesPage />;
-            })}
-          {/* {favorites.length > 0 &&
             (searchResults.length > 0 ? searchResults : favorites).map((user, index) => {
               return <User user={user} index={index} key={index} isOnFavoritesPage />;
-            })} */}
+            })}
         </S.List>
       </S.Content>
     </S.Favorites>
