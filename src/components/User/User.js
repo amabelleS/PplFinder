@@ -2,17 +2,19 @@ import React, { useContext } from "react";
 import Text from "components/Text";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import EditIcon from "@material-ui/icons/Edit";
 import Context from "../../context/favorites/context";
 
 import * as S from "./style";
 
-const User = ({ user, index, isLast, lastUserlementRef }) => {
+const User = ({ user, index, isLast, lastUserlementRef, isOnFavoritesPage }) => {
   const {
     favoritesState,
     handleMouseEnter,
     handleMouseLeave,
     isUserInFavorites,
     switchFavorites,
+    editFavorite,
   } = useContext(Context);
   const { hoveredUserId } = favoritesState;
 
@@ -35,6 +37,16 @@ const User = ({ user, index, isLast, lastUserlementRef }) => {
           {user?.location.city} {user?.location.country}
         </Text>
       </S.UserInfo>
+      {isOnFavoritesPage ? (
+        <S.IconButtonWrapper
+          isVisible={index === hoveredUserId || isUserInFavorites(user.login.uuid)}
+          onClick={() => editFavorite(user, index)}
+        >
+          <IconButton>
+            <EditIcon color="primary" />
+          </IconButton>
+        </S.IconButtonWrapper>
+      ) : null}
       <S.IconButtonWrapper
         isVisible={index === hoveredUserId || isUserInFavorites(user.login.uuid)}
         onClick={() => switchFavorites(user, index)}

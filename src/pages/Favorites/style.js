@@ -63,11 +63,18 @@ export const IconButtonWrapper = styled.div`
   transition: opacity 0.2s ease-in-out;
 `;
 
+export const ActionGroup = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+  width: 70%;
+`;
+
 export const CSVLinkrWrapper = styled.div`
   display: flex;
-  justify-content: start;
+  justify-content: flex-end;
   align-content: center;
-  width: 90%;
 
   > a {
     text-decoration: none;

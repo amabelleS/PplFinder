@@ -42,8 +42,12 @@ const useFavoritesState = () => {
     return favoritesState.favoritesUUIDs.includes(uuid);
   };
 
-  const switchFavorites = (user) => {
+  const editFavorite = (user, index) => {
     console.log(user);
+    const uuid = user.login.uuid;
+  };
+
+  const switchFavorites = (user) => {
     const uuid = user.login.uuid;
     // check if user is in not favorites list
     if (!isUserInFavorites(uuid)) {
@@ -87,6 +91,7 @@ const useFavoritesState = () => {
     handleMouseLeave,
     isUserInFavorites,
     switchFavorites,
+    editFavorite,
   };
 };
 
