@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Text from "components/Text";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { useFavorites } from "hooks/useFavorites";
 import User from "../../components/User";
+import Context from "../../context/favorites/context";
 
 import * as S from "./style";
 
 const Favorites = () => {
-  const { favoritesUsers, switchFavorites } = useFavorites();
+  // const { favoritesUsers } = useFavorites();
+  const { favoritesState } = useContext(Context);
+  const { favorites } = favoritesState;
 
   return (
     <S.Favorites>
@@ -24,16 +27,9 @@ const Favorites = () => {
           </Text>
         </S.Header>
         <S.List>
-          {favoritesUsers.length > 0 &&
-            favoritesUsers.map((user, index) => {
-              return (
-                <User
-                  user={user}
-                  index={index}
-                  key={index}
-                  // onClick={() => switchFavorites(user, index)}
-                />
-              );
+          {favorites.length > 0 &&
+            favorites.map((user, index) => {
+              return <User user={user} index={index} key={index} />;
             })}
         </S.List>
       </S.Content>

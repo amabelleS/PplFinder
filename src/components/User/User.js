@@ -1,20 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import Text from "components/Text";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import { useFavorites } from "hooks/useFavorites";
-// import { usePeopleFetch } from "hooks/usePeopleFetch";
+import Context from "../../context/favorites/context";
 
 import * as S from "./style";
 
 const User = ({ user, index, isLast, lastUserlementRef }) => {
   const {
-    isUserInFavorites,
-    hoveredUserId,
-    switchFavorites,
+    favoritesState,
     handleMouseEnter,
     handleMouseLeave,
-  } = useFavorites();
+    isUserInFavorites,
+    switchFavorites,
+  } = useContext(Context);
+  const { hoveredUserId } = favoritesState;
 
   return (
     <S.User

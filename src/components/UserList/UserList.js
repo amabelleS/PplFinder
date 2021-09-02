@@ -1,25 +1,14 @@
 import React, { useEffect, useState } from "react";
-// import Text from "components/Text";
 import Spinner from "components/Spinner";
-// import CheckBox from "components/CheckBox";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-// import IconButton from "@material-ui/core/IconButton";
-// import FavoriteIcon from "@material-ui/icons/Favorite";
-import List from "../../components/List";
 import User from "../../components/User";
 import { usePeopleFetch } from "hooks/usePeopleFetch";
-import { useFavorites } from "hooks/useFavorites";
 import * as S from "./style";
 
 const UserList = () => {
-  const { users, isLoading, error, lastUserlementRef } = usePeopleFetch();
-  const { switchFavorites, handleMouseEnter, handleMouseLeave } = useFavorites();
+  const { users, isLoading, lastUserlementRef } = usePeopleFetch();
   const [filteredUsers, setFilteredUsers] = useState([]);
-
-  // Update in ppl hook or here?? ----------------------------------------------?????????????
-  // const [loadedUsers, setLoadedUsers] = useState([]);
-  // const { handleScroll } = usePeopleFetch();
 
   // Checkboxes state:
   const [state, setState] = useState({
@@ -62,14 +51,6 @@ const UserList = () => {
       filterUsersByCountry();
     }
   }, [state]);
-
-  // logs:
-  // useEffect(() => {
-  //   if (favoritesUsers) {
-  //     console.log(favoritesUsers);
-  //     console.log(favoritesUUIDs);
-  //   }
-  // }, [favoritesUsers]);
 
   return (
     <S.UserList>
@@ -136,11 +117,6 @@ const UserList = () => {
         />
       </S.Filters>
 
-      {/* <List
-        users={filteredUsers && filteredUsers.length > 0 ? filteredUsers : users}
-        isLoading={isLoading}
-      /> */}
-
       <S.List>
         {!isLoading &&
           users.length > 0 &&
@@ -154,19 +130,10 @@ const UserList = () => {
                     key={index}
                     isLast={true}
                     lastUserlementRef={lastUserlementRef}
-                    // onClick={() => switchFavorites(user, index)}
                   />
                 );
               } else {
-                return (
-                  <User
-                    user={user}
-                    index={index}
-                    key={index}
-                    isLast={false}
-                    // onClick={() => switchFavorites(user, index)}
-                  />
-                );
+                return <User user={user} index={index} key={index} isLast={false} />;
               }
             }
           )}
@@ -176,49 +143,6 @@ const UserList = () => {
           </S.SpinnerWrapper>
         )}
       </S.List>
-
-      {/* <S.List>
-        {(filteredUsers && filteredUsers.length > 0 ? filteredUsers : users).map(
-          (user, index) => {
-            return (
-              <S.User
-                key={index}
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={handleMouseLeave}
-                onClick={() => switchFavorites(user, index)}
-              >
-                <S.UserPicture src={user?.picture.large} alt="" />
-                <S.UserInfo>
-                  <Text size="22px" bold>
-                    {user?.name.title} {user?.name.first} {user?.name.last}
-                  </Text>
-                  <Text size="14px">{user?.email}</Text>
-                  <Text size="14px">
-                    {user?.location.street.number} {user?.location.street.name}
-                  </Text>
-                  <Text size="14px">
-                    {user?.location.city} {user?.location.country}
-                  </Text>
-                </S.UserInfo>
-                <S.IconButtonWrapper
-                  isVisible={
-                    index === hoveredUserId || isUserInFavorites(user.login.uuid)
-                  }
-                >
-                  <IconButton>
-                    <FavoriteIcon color="error" />
-                  </IconButton>
-                </S.IconButtonWrapper>
-              </S.User>
-            );
-          }
-        )}
-        {isLoading && (
-          <S.SpinnerWrapper>
-            <Spinner color="primary" size="45px" thickness={6} variant="indeterminate" />
-          </S.SpinnerWrapper>
-        )}
-      </S.List> */}
     </S.UserList>
   );
 };
