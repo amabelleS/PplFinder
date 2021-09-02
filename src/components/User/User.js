@@ -21,7 +21,6 @@ const User = ({ user, index, isLast, lastUserlementRef }) => {
       ref={isLast ? lastUserlementRef : null}
       onMouseEnter={() => handleMouseEnter(index)}
       onMouseLeave={handleMouseLeave}
-      onClick={() => switchFavorites(user, index)}
     >
       <S.UserPicture src={user?.picture.large} alt="" />
       <S.UserInfo>
@@ -38,6 +37,7 @@ const User = ({ user, index, isLast, lastUserlementRef }) => {
       </S.UserInfo>
       <S.IconButtonWrapper
         isVisible={index === hoveredUserId || isUserInFavorites(user.login.uuid)}
+        onClick={() => switchFavorites(user, index)}
       >
         <IconButton>
           <FavoriteIcon color="error" />

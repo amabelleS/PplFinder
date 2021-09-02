@@ -65,7 +65,7 @@ export const IconButtonWrapper = styled.div`
 
 export const CSVLinkrWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-content: center;
   width: 90%;
 

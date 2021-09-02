@@ -47,7 +47,10 @@ const useFavoritesState = () => {
     const uuid = user.login.uuid;
     // check if user is in not favorites list
     if (!isUserInFavorites(uuid)) {
-      const updatedFavorites = [...favoritesState.favorites, user];
+      const updatedFavorites = [
+        ...favoritesState.favorites,
+        { ...user, freeTextInput: "" },
+      ];
       const updatedUUIDs = [...favoritesState.favoritesUUIDs, uuid];
 
       favoritesDispatch({
