@@ -62,3 +62,21 @@ export const IconButtonWrapper = styled.div`
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   transition: opacity 0.2s ease-in-out;
 `;
+
+export const CSVLinkrWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 90%;
+
+  > a {
+    text-decoration: none;
+    color: #84ffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    align-content: flex-end;
+  }
+  svg {
+    margin: 1rem 0 0 0.4rem;
+  }
+`;

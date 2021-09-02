@@ -17,14 +17,12 @@ export const usePeopleFetch = () => {
   const observer = useRef(null);
   const lastUserlementRef = useCallback(
     (node) => {
-      console.log(node);
+      // console.log(node);
       if (isLoading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore) {
-          console.log("visiii");
           setPage((prevPageNumber) => prevPageNumber + 1);
-          // fetchUsers();
         }
       }, options);
       if (node) observer.current.observe(node);
@@ -36,7 +34,7 @@ export const usePeopleFetch = () => {
     if (page === 1) {
       setIsLoading(true);
     }
-    setError(false);
+    // setError(false);
     const response = await axios.get(
       `https://randomuser.me/api/?page=${page}&results=25`
     );
@@ -66,19 +64,11 @@ export const usePeopleFetch = () => {
 
   useEffect(() => {
     fetchUsers();
-    // setIsLoading(false);
-    console.log(page);
-    console.log(users);
-    console.log(isLoading);
-    console.log(lastUserlementRef);
   }, [page]);
 
   return {
     users,
     isLoading,
-    // setIsLoading,
-    // fetchUsers,
-    // handleScroll,
     error,
     lastUserlementRef,
   };

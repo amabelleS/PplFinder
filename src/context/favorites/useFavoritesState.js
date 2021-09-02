@@ -42,7 +42,8 @@ const useFavoritesState = () => {
     return favoritesState.favoritesUUIDs.includes(uuid);
   };
 
-  const switchFavorites = (user, index) => {
+  const switchFavorites = (user) => {
+    console.log(user);
     const uuid = user.login.uuid;
     // check if user is in not favorites list
     if (!isUserInFavorites(uuid)) {
