@@ -11,8 +11,14 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import Slide from "@material-ui/core/Slide";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import * as S from "./style";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const User = ({ user, index, isLast, lastUserlementRef, isOnFavoritesPage }) => {
   const {
@@ -87,7 +93,15 @@ const User = ({ user, index, isLast, lastUserlementRef, isOnFavoritesPage }) => 
           </IconButton>
         </S.IconButtonWrapper>
       </S.User>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+        fullWidth="md"
+        maxWidth="md"
+        TransitionComponent={Transition}
+        keepMounted
+      >
         <DialogTitle id="form-dialog-title">Add Your Inputs</DialogTitle>
         <DialogContent>
           <DialogContentText>{user.freeTextInput}</DialogContentText>
@@ -98,6 +112,8 @@ const User = ({ user, index, isLast, lastUserlementRef, isOnFavoritesPage }) => 
             label="Save to Favorite"
             type="text"
             fullWidth
+            multiline
+            maxRows={4}
             value={freeTextValue}
             onChange={handelInputChange}
           />

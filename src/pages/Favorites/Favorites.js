@@ -10,7 +10,11 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import TextField from "@material-ui/core/TextField";
+
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
 
 import * as S from "./style";
 
@@ -61,45 +65,80 @@ const Favorites = () => {
     }
   }, [searchTerm, favorites]);
 
+  // const preventDefault = (event) => event.preventDefault();
+
   return (
     <S.Favorites>
       <S.Content>
-        <S.Header>
-          <Text size="64px" bold>
-            <FavoriteIcon
-              color="error"
-              fontSize="large"
-              style={{ marginRight: "1rem" }}
-            />
-            Favorites
-            <FavoriteIcon color="error" fontSize="large" style={{ marginLeft: "1rem" }} />
-          </Text>
-        </S.Header>
-        <S.ActionGroup>
-          <FormControl>
-            <InputLabel htmlFor="my-input">Search Your Favorite</InputLabel>
-            <Input
-              id="my-input"
-              aria-describedby="my-helper-text"
-              value={searchTerm}
-              onChange={handleInputChange}
-            />
-            <FormHelperText id="my-helper-text">
-              By name, city, or #free text.
-            </FormHelperText>
-          </FormControl>
-          <S.CSVLinkrWrapper>
-            <CSVLink data={favorites} headers={headers}>
-              Download to CSV
-              <GetAppIcon color="primary" />
-            </CSVLink>
-          </S.CSVLinkrWrapper>
-        </S.ActionGroup>
+        {favorites && favorites.length > 0 && (
+          <S.Header>
+            <S.ActionGroup>
+              <FormControl>
+                <InputLabel htmlFor="my-input">Search Your Favorite</InputLabel>
+                <Input
+                  id="my-input"
+                  aria-describedby="my-helper-text"
+                  value={searchTerm}
+                  onChange={handleInputChange}
+                />
+                <FormHelperText id="my-helper-text">
+                  By name, city, or #free text.
+                </FormHelperText>
+              </FormControl>
+
+              <Text size="64px" bold>
+                <FavoriteIcon
+                  color="error"
+                  fontSize="large"
+                  style={{ marginRight: "1rem" }}
+                />
+                Favorites
+                <FavoriteIcon
+                  color="error"
+                  fontSize="large"
+                  style={{ marginLeft: "1rem" }}
+                />
+              </Text>
+              <S.CSVLinkrWrapper>
+                <CSVLink data={favorites} headers={headers}>
+                  Download to CSV
+                  <GetAppIcon color="primary" />
+                </CSVLink>
+              </S.CSVLinkrWrapper>
+            </S.ActionGroup>
+          </S.Header>
+        )}
+
         <S.List>
-          {favorites.length > 0 &&
-            (searchResults.length > 0 ? searchResults : favorites).map((user, index) => {
-              return <User user={user} index={index} key={index} isOnFavoritesPage />;
-            })}
+          {favorites.length <= 0 && (
+            <Card>
+              <CardContent>
+                <Text color="#84ffff" size="2rem" bold>
+                  Please select your favorites from the home page
+                  <FavoriteIcon
+                    color="error"
+                    fontSize="large"
+                    style={{ marginLeft: "1rem" }}
+                  />
+                </Text>
+              </CardContent>
+              {/* <CardActions> */}
+              {/* <Link href="#" onClick={preventDefault}>
+                  Link
+                </Link> */}
+              {/* </CardActions> */}
+            </Card>
+          )}
+          {/* {favorites.length <= 0 && (
+            <Text>Please select your favorites from the home page</Text>
+          )} */}
+          {favorites.length > 0
+            ? (searchResults.length > 0 ? searchResults : favorites).map(
+                (user, index) => {
+                  return <User user={user} index={index} key={index} isOnFavoritesPage />;
+                }
+              )
+            : null}
         </S.List>
       </S.Content>
     </S.Favorites>

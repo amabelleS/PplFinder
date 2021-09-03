@@ -66,24 +66,24 @@ export const IconButtonWrapper = styled.div`
 export const ActionGroup = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-content: center;
-  width: 70%;
+  width: 60vw;
   /* width: 29%; */
 `;
 
 export const CSVLinkrWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   align-content: center;
-  margin-left: 8rem;
+  /* margin-left: 8rem; */
 
   > a {
     text-decoration: none;
     color: #84ffff;
     font-size: 1.1rem;
     font-weight: bold;
-    align-content: flex-end;
+    /* align-content: flex-end; */
   }
   svg {
     margin: 1rem 0 0 0.4rem;
