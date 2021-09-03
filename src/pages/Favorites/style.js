@@ -56,20 +56,25 @@ export const SpinnerWrapper = styled.div`
   justify-content: center;
 `;
 
-export const IconButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
-  transition: opacity 0.2s ease-in-out;
-`;
+// export const IconTextWrapper = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   align-content: center;
+//   justify-content: center;
+//   text-align: center;
+
+// `;
 
 export const ActionGroup = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-content: center;
   width: 60vw;
-  /* width: 29%; */
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 `;
 
 export const CSVLinkrWrapper = styled.div`
@@ -77,6 +82,20 @@ export const CSVLinkrWrapper = styled.div`
   /* justify-content: flex-end; */
   align-content: center;
   /* margin-left: 8rem; */
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  margin: 0;
+  font-size: 0.8rem;
+  /* color: white; */
+  /* background: #ff5454; */
+  /* background: #ef476f; */
+  padding: 0.7rem;
+  /* transform: rotate(45deg) translate(6rem); */
+  /* transform-origin: center; */
+  /* width: 18rem; */
+  text-align: center;
+  /* text-transform: uppercase !important; */
 
   > a {
     text-decoration: none;
@@ -86,6 +105,6 @@ export const CSVLinkrWrapper = styled.div`
     /* align-content: flex-end; */
   }
   svg {
-    margin: 1rem 0 0 0.4rem;
+    /* margin: 1rem 0 0 0.4rem; */
   }
 `;

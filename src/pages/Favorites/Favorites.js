@@ -1,7 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
+// import { Link as RouterLink } from "react-router-dom";
+// import Link from "@material-ui/core/Link";
 import Text from "components/Text";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import GetAppIcon from "@material-ui/icons/GetApp";
+import Hidden from "@material-ui/core/Hidden";
 import User from "../../components/User";
 import Context from "../../context/favorites/context";
 import { CSVLink } from "react-csv";
@@ -12,9 +15,11 @@ import Input from "@material-ui/core/Input";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
+// import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
+
+// import json2mq from "json2mq";
+// import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import * as S from "./style";
 
@@ -24,6 +29,12 @@ const Favorites = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+
+  // const matches = useMediaQuery(
+  //   json2mq({
+  //     minWidth: 600,
+  //   })
+  // );
 
   // Export favorites list to csv:
   const headers = [
@@ -72,7 +83,23 @@ const Favorites = () => {
       <S.Content>
         {favorites && favorites.length > 0 && (
           <S.Header>
+            <S.CSVLinkrWrapper>
+              <CSVLink data={favorites} headers={headers}>
+                Download to CSV
+                <GetAppIcon color="primary" />
+              </CSVLink>
+            </S.CSVLinkrWrapper>
             <S.ActionGroup>
+              <Text size="64px" bold>
+                Favorites
+                <Hidden xsDown>
+                  <FavoriteIcon
+                    color="error"
+                    fontSize="large"
+                    style={{ margin: "0 1rem 0 1rem " }}
+                  />
+                </Hidden>
+              </Text>
               <FormControl>
                 <InputLabel htmlFor="my-input">Search Your Favorite</InputLabel>
                 <Input
@@ -80,31 +107,12 @@ const Favorites = () => {
                   aria-describedby="my-helper-text"
                   value={searchTerm}
                   onChange={handleInputChange}
+                  style={{ width: "11rem" }}
                 />
                 <FormHelperText id="my-helper-text">
                   By name, city, or #free text.
                 </FormHelperText>
               </FormControl>
-
-              <Text size="64px" bold>
-                <FavoriteIcon
-                  color="error"
-                  fontSize="large"
-                  style={{ marginRight: "1rem" }}
-                />
-                Favorites
-                <FavoriteIcon
-                  color="error"
-                  fontSize="large"
-                  style={{ marginLeft: "1rem" }}
-                />
-              </Text>
-              <S.CSVLinkrWrapper>
-                <CSVLink data={favorites} headers={headers}>
-                  Download to CSV
-                  <GetAppIcon color="primary" />
-                </CSVLink>
-              </S.CSVLinkrWrapper>
             </S.ActionGroup>
           </S.Header>
         )}
@@ -122,11 +130,11 @@ const Favorites = () => {
                   />
                 </Text>
               </CardContent>
-              {/* <CardActions> */}
-              {/* <Link href="#" onClick={preventDefault}>
-                  Link
-                </Link> */}
-              {/* </CardActions> */}
+              {/* <CardActions>
+                <Link component={RouterLink} to="/">
+                  To Home
+                </Link>
+              </CardActions> */}
             </Card>
           )}
           {/* {favorites.length <= 0 && (
