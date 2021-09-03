@@ -79,25 +79,18 @@ export const ActionGroup = styled.div`
 
 export const CSVLinkrWrapper = styled.div`
   display: flex;
-  /* justify-content: flex-end; */
+  justify-content: center;
   align-content: center;
-  /* margin-left: 8rem; */
   position: absolute;
   top: 3rem;
   right: 0;
   margin: 0;
   font-size: 0.8rem;
-  /* color: white; */
-  /* background: #ff5454; */
-  /* background: #ef476f; */
   padding: 0.7rem;
-  /* transform: rotate(45deg) translate(6rem); */
-  /* transform-origin: center; */
-  /* width: 18rem; */
   text-align: center;
-  /* text-transform: uppercase !important; */
 
   > a {
+    display: flex;
     text-decoration: none;
     color: #84ffff;
     font-size: 1.1rem;
