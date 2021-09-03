@@ -12,7 +12,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import * as S from "./style";
 
@@ -45,8 +44,6 @@ const User = ({ user, index, isLast, lastUserlementRef, isOnFavoritesPage }) => 
   // edit user
   const handleEdit = () => {
     setOpen(false);
-
-    // const updatedFavorite = { ...user, user.freeTextInput: freeTextValue };
     editFavorite(user, freeTextValue);
   };
 

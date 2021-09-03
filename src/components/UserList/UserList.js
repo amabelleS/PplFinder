@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Spinner from "components/Spinner";
-import Checkbox from "@material-ui/core/Checkbox";
+// import Checkbox from "@material-ui/core/Checkbox";
+import CheckBox from "../CheckBox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import User from "../../components/User";
 import { usePeopleFetch } from "hooks/usePeopleFetch";
@@ -57,7 +58,7 @@ const UserList = () => {
       <S.Filters>
         <FormControlLabel
           control={
-            <Checkbox
+            <CheckBox
               checked={state.brazil}
               onChange={handleChange}
               color="primary"
@@ -69,7 +70,7 @@ const UserList = () => {
         />
         <FormControlLabel
           control={
-            <Checkbox
+            <CheckBox
               checked={state.australia}
               onChange={handleChange}
               color="primary"
@@ -81,7 +82,7 @@ const UserList = () => {
         />
         <FormControlLabel
           control={
-            <Checkbox
+            <CheckBox
               checked={state.canada}
               onChange={handleChange}
               color="primary"
@@ -93,7 +94,7 @@ const UserList = () => {
         />
         <FormControlLabel
           control={
-            <Checkbox
+            <CheckBox
               checked={state.germany}
               onChange={handleChange}
               color="primary"
@@ -105,7 +106,7 @@ const UserList = () => {
         />
         <FormControlLabel
           control={
-            <Checkbox
+            <CheckBox
               checked={state.finland}
               onChange={handleChange}
               color="primary"
