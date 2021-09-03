@@ -37,33 +37,10 @@ export const User = styled.div`
   gap: 16px;
 `;
 
-export const UserInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  max-height: 128px;
-  gap: 2px;
-  overflow: hidden;
-`;
-
-export const UserPicture = styled.img`
-  border-radius: 45%;
-`;
-
 export const SpinnerWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
-
-// export const IconTextWrapper = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   align-content: center;
-//   justify-content: center;
-//   text-align: center;
-
-// `;
 
 export const ActionGroup = styled.div`
   display: flex;
@@ -95,9 +72,5 @@ export const CSVLinkrWrapper = styled.div`
     color: #84ffff;
     font-size: 1.1rem;
     font-weight: bold;
-    /* align-content: flex-end; */
-  }
-  svg {
-    /* margin: 1rem 0 0 0.4rem; */
   }
 `;

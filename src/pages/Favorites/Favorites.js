@@ -1,6 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-// import { Link as RouterLink } from "react-router-dom";
-// import Link from "@material-ui/core/Link";
 import Text from "components/Text";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import GetAppIcon from "@material-ui/icons/GetApp";
@@ -15,11 +13,7 @@ import Input from "@material-ui/core/Input";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
 import Card from "@material-ui/core/Card";
-// import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-
-// import json2mq from "json2mq";
-// import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import * as S from "./style";
 
@@ -30,13 +24,6 @@ const Favorites = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  // const matches = useMediaQuery(
-  //   json2mq({
-  //     minWidth: 600,
-  //   })
-  // );
-
-  // Export favorites list to csv:
   const headers = [
     { label: "First Name", key: "name.first" },
     { label: "Last Name", key: "name.last" },
@@ -75,8 +62,6 @@ const Favorites = () => {
       setSearchResults(results);
     }
   }, [searchTerm, favorites]);
-
-  // const preventDefault = (event) => event.preventDefault();
 
   return (
     <S.Favorites>
@@ -130,16 +115,8 @@ const Favorites = () => {
                   />
                 </Text>
               </CardContent>
-              {/* <CardActions>
-                <Link component={RouterLink} to="/">
-                  To Home
-                </Link>
-              </CardActions> */}
             </Card>
           )}
-          {/* {favorites.length <= 0 && (
-            <Text>Please select your favorites from the home page</Text>
-          )} */}
           {favorites.length > 0
             ? (searchResults.length > 0 ? searchResults : favorites).map(
                 (user, index) => {

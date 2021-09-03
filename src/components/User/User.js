@@ -32,7 +32,7 @@ const User = ({ user, index, isLast, lastUserlementRef, isOnFavoritesPage }) => 
   const { hoveredUserId } = favoritesState;
 
   const [open, setOpen] = useState(false);
-  const [freeTextValue, setFreeTextValue] = useState("");
+  const [freeTextValue, setFreeTextValue] = useState(user.freeTextInput);
 
   const handleClickOpen = () => {
     setOpen(true);
