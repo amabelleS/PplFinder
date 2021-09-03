@@ -20,7 +20,6 @@ const Favorites = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [freeTextValue, setFreeTextValue] = useState("");
 
   // Export favorites list to csv:
   const headers = [

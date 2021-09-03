@@ -42,9 +42,21 @@ const useFavoritesState = () => {
     return favoritesState.favoritesUUIDs.includes(uuid);
   };
 
-  const editFavorite = (user, index) => {
+  const editFavorite = (user, text) => {
     console.log(user);
     const uuid = user.login.uuid;
+
+    const updatedFavorite = { ...user, freeTextInput: text };
+    const updatedFavorites = [
+      ...favoritesState.favorites.map((favorite) =>
+        favorite.login.uuid === uuid ? updatedFavorite : favorite
+      ),
+    ];
+
+    favoritesDispatch({
+      type: "set-favorites",
+      payload: updatedFavorites,
+    });
   };
 
   const switchFavorites = (user) => {
