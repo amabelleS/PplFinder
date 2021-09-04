@@ -70,3 +70,9 @@ After you've completed your tasks, and you are ready to submit it, do the follow
 3. Send us an email with your repo link & deployed app url.
 
 ## Good Luck!
+
+## The Final Project
+### Bonus
+
+The Favorites page has an option to add free text to each user, and search him 
+by his name, city or the users input text. The list can be exported to a CSV file.
