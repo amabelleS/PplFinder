@@ -1,5 +1,5 @@
 {
-  "homepage": "http://amabelleS.github.io/PplFinder",
+  "homepage": "https://amabelleS.github.io/PplFinder",
   "name": "ppl-finder",
   "version": "1.0.7",
   "bin": "./bin/cli.js",
