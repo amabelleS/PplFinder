@@ -53,4 +53,7 @@ export const Filters = styled.div`
   & > * {
     margin-inline-end: 8px;
   }
+  @media (max-width: 700px) {
+    flex-wrap: wrap;
+  }
 `;
