@@ -11,7 +11,7 @@ const AppRouter = () => {
   return (
     <FavoritesProvider>
       <ThemeProvider>
-        <Router basename="/PplFinder">
+        <Router>
           <NavBar />
           <Switch>
             <Route exact path="/" component={Home} />
