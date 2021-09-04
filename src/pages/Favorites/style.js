@@ -37,12 +37,7 @@ export const User = styled.div`
   gap: 16px;
 `;
 
-export const SpinnerWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-export const ActionGroup = styled.div`
+export const HeaderGroup = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -51,6 +46,7 @@ export const ActionGroup = styled.div`
 
   @media (max-width: 700px) {
     flex-direction: column;
+    align-items: center;
   }
 `;
 

@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import Text from "components/Text";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import GetAppIcon from "@material-ui/icons/GetApp";
-import Hidden from "@material-ui/core/Hidden";
 import User from "../../components/User";
 import Context from "../../context/favorites/context";
 import { CSVLink } from "react-csv";
@@ -74,16 +73,14 @@ const Favorites = () => {
                 <GetAppIcon color="primary" />
               </CSVLink>
             </S.CSVLinkrWrapper>
-            <S.ActionGroup>
+            <S.HeaderGroup>
               <Text size="64px" bold>
                 Favorites
-                <Hidden xsDown>
-                  <FavoriteIcon
-                    color="error"
-                    fontSize="large"
-                    style={{ margin: "0 1rem 0 1rem " }}
-                  />
-                </Hidden>
+                <FavoriteIcon
+                  color="error"
+                  fontSize="large"
+                  style={{ margin: "0 0.4rem 0 0.4rem " }}
+                />
               </Text>
               <FormControl>
                 <InputLabel htmlFor="my-input">Search Your Favorite</InputLabel>
@@ -98,7 +95,7 @@ const Favorites = () => {
                   By name, city, or #free text.
                 </FormHelperText>
               </FormControl>
-            </S.ActionGroup>
+            </S.HeaderGroup>
           </S.Header>
         )}
 
