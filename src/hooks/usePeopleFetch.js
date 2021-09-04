@@ -38,23 +38,6 @@ export const usePeopleFetch = () => {
     const response = await axios.get(
       `https://randomuser.me/api/?page=${page}&results=25`
     );
-    // await axios({
-    //   // method: "GET",
-    //   url: `https://randomuser.me/api/?page=${page}&results=25`,
-    //   // params: { page: page },
-    // })
-    // .then((res) => {
-    //   setUsers((prev) => {
-    //     return [...prev, ...res.data.results];
-    //   });
-    //   setHasMore(res.data.results.length > 0);
-    //   setIsLoading(false);
-    //   // console.log(res.data);
-    // })
-    // .catch((err) => {
-    //   setError(true);
-    // });
-    // console.log(users);
     setUsers((prev) => {
       return [...prev, ...response.data.results];
     });

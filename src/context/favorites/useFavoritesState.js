@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from "react";
+import { useReducer } from "react";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -43,7 +43,6 @@ const useFavoritesState = () => {
   };
 
   const editFavorite = (user, text) => {
-    console.log(user);
     const uuid = user.login.uuid;
 
     const updatedFavorite = { ...user, freeTextInput: text };
@@ -61,8 +60,9 @@ const useFavoritesState = () => {
 
   const switchFavorites = (user) => {
     const uuid = user.login.uuid;
-    // check if user is in not favorites list
+    // check if user is not in favorites list
     if (!isUserInFavorites(uuid)) {
+      // then add him to the list, adding freeTextInput
       const updatedFavorites = [
         ...favoritesState.favorites,
         { ...user, freeTextInput: "" },
