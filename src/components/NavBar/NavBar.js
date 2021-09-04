@@ -12,7 +12,7 @@ const NavBar = () => {
 
   const handleChange = (event, newValue) => {
     // Do I need to push here?
-    history.push(`${newValue}`);
+    // history.push(`${newValue}`);
     setValue(newValue);
   };
 
