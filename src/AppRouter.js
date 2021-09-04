@@ -1,7 +1,7 @@
 import React from "react";
-// import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 // Changed from HashRouter, both work
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+// import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { Home, Favorites } from "pages";
 import { ThemeProvider } from "theme";
 import { FavoritesProvider } from "context/favorites";
